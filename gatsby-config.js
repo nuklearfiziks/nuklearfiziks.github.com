@@ -8,7 +8,7 @@ module.exports = {
     description: 'Portfolio and more',
     siteUrl: 'https://nuklearfiziks.com',
   },
-  // pathPrefix: '/gatsby-starter-blog',
+  pathPrefix: '/',
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
