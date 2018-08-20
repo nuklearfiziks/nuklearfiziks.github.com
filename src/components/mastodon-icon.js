@@ -1,4 +1,4 @@
-export const mastodon = {
+export default {
   viewBox: '0 0 216.4144 232.00976',
   children: [
     {
@@ -18,4 +18,4 @@ export const mastodon = {
       },
     },
   ],
-}
+};

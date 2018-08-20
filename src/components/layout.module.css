@@ -1,0 +1,11 @@
+.outer_container {
+  margin-left: 40%;
+  margin-right: auto;
+}
+
+@media (max-width: 980px) {
+  .outer_container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

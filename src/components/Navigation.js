@@ -3,7 +3,7 @@
  * Nav bar
  */
 
-import React from 'react'
+import React from 'react';
 
 const sections = [
   {
@@ -12,18 +12,16 @@ const sections = [
   {
     text: 'Blog',
   },
-]
+];
 
 const Navivgation = () => (
   <nav>
     <ul>
-      {sections.map(link => {
-        return (
-          <li>
-            <a href="">{link.text}</a>
-          </li>
-        )
-      })}
+      {sections.map(link => (
+        <li>
+          <a href="">{link.text}</a>
+        </li>
+      ))}
     </ul>
   </nav>
-)
+);
