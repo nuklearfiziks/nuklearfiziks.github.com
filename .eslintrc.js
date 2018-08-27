@@ -9,9 +9,6 @@ module.exports = {
     'react/jsx-filename-extension': [0],
   },
   plugins: ['react'],
-  globals: {
-    graphql: false,
-  },
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {

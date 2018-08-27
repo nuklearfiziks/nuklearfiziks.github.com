@@ -1,6 +1,3 @@
-const credentials = require('./credentials.json');
-const oauth = require('./oauth.json');
-
 module.exports = {
   siteMetadata: {
     title: 'nuklearfiziks.com',

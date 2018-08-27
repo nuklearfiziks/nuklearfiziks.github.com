@@ -17,6 +17,7 @@ export default ({ location, children }) => {
           marginTop: 0,
           color: '#004e2b',
         }}
+        className={styles.main__header}
       >
         <Link
           style={{
@@ -55,13 +56,7 @@ export default ({ location, children }) => {
   return (
     <Fragment>
       <Spiral />
-      <div
-        className={styles.outer_container}
-        style={{
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
+      <div className={styles.outer_container}>
         {header}
         {children}
       </div>

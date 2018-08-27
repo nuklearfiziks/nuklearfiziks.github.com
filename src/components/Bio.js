@@ -39,12 +39,7 @@ const items = [
 ];
 
 const Bio = () => (
-  <div
-    className={styles.bio}
-    styles={{
-      marginBottom: rhythm(2.5),
-    }}
-  >
+  <div className={styles.bio}>
     <img
       className={styles.pic}
       src={profilePic}

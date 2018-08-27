@@ -4,7 +4,9 @@
  */
 
 import React, { PureComponent } from 'react';
+import * as debounce from 'lodash.debounce';
 import * as d3 from 'd3';
+import styles from './spiral.module.css';
 
 const MAX_WIDTH = 980;
 
@@ -19,9 +21,10 @@ class Background extends PureComponent {
     const isMobile = innerWidth < MAX_WIDTH;
     const svg = d3
       .select(this.ref.current)
-
       .attr('width', innerWidth)
       .attr('height', innerHeight);
+    this.svg = svg;
+
     const n = 100; // isMobile ? 50 : 100;
     const [cx, cy] = isMobile
       ? [innerWidth / 2, innerHeight * 0.75]
@@ -55,6 +58,13 @@ class Background extends PureComponent {
         const { scrollY } = window;
         circles.attr('cy', (d, i) => cy + slopeY(scrollY) / (i + 1));
       });
+      console.dir(circles.size());
+      const lastCircle = d3.select(circles.nodes()[0]);
+
+      // svg.style(
+      //   'clip-path',
+      //   `circle(${lastCircle.attr('r')}px at ${lastCircle.attr('cx')}px ${lastCircle.attr('cy')}px)`,
+      // );
     } else {
       d3.select('body').on('mousemove', () => {
         const { pageX, pageY } = d3.event;
@@ -64,18 +74,19 @@ class Background extends PureComponent {
       });
     }
 
-    // @TODO make work on resize.
-    // this.resizeListener = window.addEventListener('resize', () => {
-    //   window.removeEventListener('resize', this.resizeListener);
-    //   svg.selectAll('circles').remove();
-    //   d3.select('body').on('mousemove', null);
-    //   d3.select(window).on('scroll', null);
-    //   setTimeout(() => this.componentDidMount(), 1000);
-    // });
+    this.resizeListener = window.addEventListener('resize', debounce(this.onResize.bind(this), 500));
+  }
+
+  onResize() {
+    console.log('resize');
+    this.svg.selectAll('circle').remove();
+    d3.select('body').on('mousemove', null);
+    d3.select(window).on('scroll', null);
+    this.componentDidMount();
   }
 
   render() {
-    return <svg style={{ position: 'fixed', zIndex: -1 }} ref={this.ref} />;
+    return <svg ref={this.ref} className={styles.spiral} />;
   }
 }
 

@@ -1,0 +1,12 @@
+.spiral {
+  position: fixed;
+  z-index: -1;
+  background: transparent;
+}
+
+@media (max-width: 980px) {
+  .spiral {
+    z-index: 1;
+    pointer-events: none;
+  }
+}
